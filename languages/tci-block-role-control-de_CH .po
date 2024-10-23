@@ -1,0 +1,21 @@
+msgid "Settings for role"
+msgstr "Einstellungen für Rolle"
+
+msgid "saved!"
+msgstr "gespeichert!"
+
+msgid "Select a User Role"
+msgstr "Wähle eine Benutzerrolle"
+
+msgid "Select a role"
+msgstr "Wähle eine Rolle"
+
+msgid "Blocks for role: %s"
+msgstr "Blöcke für die Rolle: %s"
+
+msgid "Enable all %s blocks"
+msgstr "Alle %s Blöcke aktivieren"
+
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
