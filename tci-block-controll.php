@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: TCI Block Role Control
- * Plugin URI: https://example.com/tci-block-role-control
+ * Plugin URI: https://github.com/tcicit/tci-block-role-control/
  * Description: Allows enabling and disabling blocks based on user roles.
  * Version: 1.20
  * Author: Thomas Cigolla
