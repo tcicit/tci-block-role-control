@@ -2,14 +2,14 @@
 
 /**
  * Plugin Name: TCI Block Role Control
- * Plugin URI: https://github.com/tcicit/tci-block-role-control/
+ * Plugin URI: https://github.com/tcicit/tci-block-roles-control/
  * Description: Allows enabling and disabling blocks based on user roles.
  * Version: 1.20
  * Author: Thomas Cigolla
  * Author URI: https://cigolla.ch
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: tci-block-role-control
+ * Text Domain: tci-block-roles-control
  */
 
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
@@ -17,7 +17,7 @@
  // Load language files
 function block_roles_control_load_textdomain()
 {
-    load_plugin_textdomain('tci-block-role-control', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+    load_plugin_textdomain('tci-block-roles-control', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 add_action('plugins_loaded', 'block_roles_control_load_textdomain');
 
@@ -70,8 +70,8 @@ function block_roles_control_get_registered_blocks()
 function block_roles_control_admin_menu()
 {
     add_management_page(
-        __('tci Block Role Control', 'tci-block-role-control'),
-        __('Block Role Control', 'tci-block-role-control'),
+        __('tci Block Role Control', 'tci-block-roles-control'),
+        __('Block Role Control', 'tci-block-roles-control'),
         'manage_options',
         'block-roles-control',
         'block_roles_control_settings_page'
@@ -97,7 +97,7 @@ function block_roles_control_settings_page()
                 : [];
             update_option("allowed_blocks_$selected_role", $allowed_blocks);
 
-            echo '<div class="updated"><p>' . esc_html(__('Settings for role', 'tci-block-role-control')) . ' ' . esc_html($selected_role) . ' ' . esc_html(__('saved!', 'tci-block-role-control')) . '</p></div>';
+            echo '<div class="updated"><p>' . esc_html(__('Settings for role', 'tci-block-roles-control')) . ' ' . esc_html($selected_role) . ' ' . esc_html(__('saved!', 'tci-block-roles-control')) . '</p></div>';
         }
     }
 
@@ -105,12 +105,12 @@ function block_roles_control_settings_page()
     $blocks_by_category = block_roles_control_get_registered_blocks();
 ?>
     <div class="wrap">
-        <h1><?php esc_html_e('tci Block Role Control', 'tci-block-role-control'); ?></h1>
+        <h1><?php esc_html_e('tci Block Role Control', 'tci-block-roles-control'); ?></h1>
         <form method="post">
             <?php wp_nonce_field('block_roles_control_save_action', 'block_roles_control_nonce'); ?>
-            <h2><?php esc_html_e('Select a User Role', 'tci-block-role-control'); ?></h2>
+            <h2><?php esc_html_e('Select a User Role', 'tci-block-roles-control'); ?></h2>
             <select name="selected_role" onchange="this.form.submit()">
-                <option value=""><?php esc_html_e('Select a role', 'tci-block-role-control'); ?></option>
+                <option value=""><?php esc_html_e('Select a role', 'tci-block-roles-control'); ?></option>
                 <?php foreach ($user_roles as $role => $details) : ?>
                     <option value="<?php echo esc_attr($role); ?>" <?php selected($selected_role, $role); ?>>
                         <?php echo esc_html($details['name']); ?>
@@ -125,11 +125,11 @@ function block_roles_control_settings_page()
                 <input type="hidden" name="selected_role" value="<?php echo esc_attr($selected_role); ?>">
                 <h2><?php
                     // translators: %s: User role name
-                    printf(esc_html__('Blocks for role: %s', 'tci-block-role-control'), esc_html($user_roles[$selected_role]['name'])); ?></h2>
+                    printf(esc_html__('Blocks for role: %s', 'tci-block-roles-control'), esc_html($user_roles[$selected_role]['name'])); ?></h2>
                 <fieldset>
                     <legend><?php
                             // translators: %s: User role name
-                            printf(esc_html__('Select blocks available for role %s:', 'tci-block-role-control'), esc_html($user_roles[$selected_role]['name'])); ?></legend>
+                            printf(esc_html__('Select blocks available for role %s:', 'tci-block-roles-control'), esc_html($user_roles[$selected_role]['name'])); ?></legend>
 
                     <?php
                     $allowed_blocks = get_option("allowed_blocks_$selected_role", []);
@@ -143,7 +143,7 @@ function block_roles_control_settings_page()
                                                                                                                                 }, false)); ?>>
                             <?php
                             // translators: %s: Category name
-                            printf(esc_html__('Enable all %s blocks', 'tci-block-role-control'), esc_html($category)); ?>
+                            printf(esc_html__('Enable all %s blocks', 'tci-block-roles-control'), esc_html($category)); ?>
                         </label><br>
                         <?php foreach ($blocks as $block => $block_label) : ?>
                             <label>
@@ -154,11 +154,14 @@ function block_roles_control_settings_page()
                     <?php endforeach; ?>
                 </fieldset>
                 <p>
-                    <input type="submit" name="block_roles_control_save" class="button button-primary" value="<?php esc_attr_e('Save Settings', 'tci-block-role-control'); ?>">
+                    <input type="submit" name="block_roles_control_save" class="button button-primary" value="<?php esc_attr_e('Save Settings', 'tci-block-roles-control'); ?>">
                 </p>
             </form>
         <?php endif; ?>
     </div>
+
+
+    
     <script>
         document.querySelectorAll('.toggle-category').forEach(function(categoryToggle) {
             categoryToggle.addEventListener('change', function() {
