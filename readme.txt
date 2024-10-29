@@ -1,5 +1,5 @@
 === TCI Block Role Control ===
-Contributors: tci-block-controll.php
+Contributors: tci-block-roles-controll.php
 Donate link: 
 Tags: blocks, user roles
 Requires at least: 5.0
